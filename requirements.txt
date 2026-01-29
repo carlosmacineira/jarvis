@@ -1,0 +1,43 @@
+# JARVIS Dependencies
+# Install with: pip install -r requirements.txt
+
+# ============================================
+# CORE DEPENDENCIES
+# ============================================
+
+# Anthropic Claude API (Cloud mode)
+anthropic>=0.40.0
+
+# HTTP requests (for Ollama local API)
+requests>=2.31.0
+
+# ============================================
+# VOICE INTERFACE (Optional)
+# ============================================
+
+# ElevenLabs Text-to-Speech
+elevenlabs>=1.0.0
+
+# Speech Recognition
+SpeechRecognition>=3.10.0
+
+# Audio handling
+PyAudio>=0.2.14
+
+# For audio playback (used by elevenlabs)
+pydub>=0.25.1
+
+# ============================================
+# OPTIONAL ENHANCEMENTS
+# ============================================
+
+# For faster audio processing
+numpy>=1.24.0
+
+# For WhatsApp integration (Phase 4)
+# flask>=3.0.0
+# twilio>=9.0.0
+
+# For web UI (future)
+# fastapi>=0.109.0
+# uvicorn>=0.27.0
