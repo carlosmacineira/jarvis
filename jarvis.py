@@ -66,7 +66,7 @@ class Config:
     ollama_model: str = "dolphin-llama3:8b"
     
     # Claude
-    claude_model: str = "claude-sonnet-4-20250514"
+    claude_model: str = "claude-sonnet-4-5-20250929"
     
     # UI
     typing_speed: float = 0.01
