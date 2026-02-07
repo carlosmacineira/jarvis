@@ -1,19 +1,9 @@
 #!/usr/bin/env python3
 """
-     ██╗ █████╗ ██████╗ ██╗   ██╗██╗███████╗
-     ██║██╔══██╗██╔══██╗██║   ██║██║██╔════╝
-     ██║███████║██████╔╝██║   ██║██║███████╗
-██   ██║██╔══██║██╔══██╗╚██╗ ██╔╝██║╚════██║
-╚█████╔╝██║  ██║██║  ██║ ╚████╔╝ ██║███████║
- ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚══════╝
+JARVIS - Personal AI Assistant
+Hybrid architecture: Local (Ollama) + Cloud (Claude)
 
-JARVIS v3.0 - Personal AI Assistant
-Hybrid Architecture: Local (Ollama) + Cloud (Claude)
-
-Designed & Developed by Carlos Macineira
-© 2026 Charlie Mac Industries
-
-Repository: github.com/carlosmacineira/jarvis
+Carlos Macineira | github.com/carlosmacineira/jarvis
 """
 
 import os
@@ -50,9 +40,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# CONFIGURATION
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- Configuration ---
 
 @dataclass
 class Config:
@@ -77,9 +65,7 @@ class Config:
     mode: str = "auto"  # auto, local, cloud
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# COLOR PALETTE - Inspired by Iron Man / Arc Reactor
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- Theme ---
 
 class Theme:
     """Color theme constants"""
@@ -111,9 +97,7 @@ class Theme:
     ERROR_STYLE = Style(color="red", bold=True)
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# CONSOLE SETUP
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- Console ---
 
 console = Console() if RICH_AVAILABLE else None
 
@@ -123,9 +107,7 @@ def get_terminal_width() -> int:
     return shutil.get_terminal_size().columns
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# STARTUP ANIMATION & BRANDING
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- Startup & Branding ---
 
 # ASCII Art Logos
 JARVIS_LOGO_LARGE = """
@@ -254,9 +236,7 @@ def display_header():
     console.print(Panel(header, border_style="cyan", box=box.ROUNDED, padding=(0, 2)))
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# SYSTEM STATUS DISPLAY
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- Status Display ---
 
 def display_status(ollama_status: bool, claude_status: bool, ollama_models: List[str], mode: str):
     """Display beautiful system status"""
@@ -319,9 +299,7 @@ def display_status(ollama_status: bool, claude_status: bool, ollama_models: List
     console.print()
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# SYSTEM PROMPTS
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- System Prompts ---
 
 LOCAL_SYSTEM_PROMPT = """You are JARVIS, an advanced AI assistant running locally via Ollama.
 
@@ -364,9 +342,7 @@ CONTEXT:
 Be helpful, intelligent, and efficient. Skip unnecessary preamble."""
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# AUTO-ROUTING LOGIC
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- Auto-Routing ---
 
 def determine_routing(query: str) -> str:
     """Determine whether to use local or cloud based on query"""
@@ -399,9 +375,7 @@ def determine_routing(query: str) -> str:
     return "local"
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# OLLAMA CLIENT
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- Ollama Client ---
 
 class OllamaClient:
     """Local AI via Ollama"""
@@ -445,9 +419,7 @@ class OllamaClient:
             yield f"[Error: {str(e)}]"
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# CLAUDE CLIENT
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- Claude Client ---
 
 class ClaudeClient:
     """Cloud AI via Claude API"""
@@ -501,9 +473,7 @@ class ClaudeClient:
             yield f"[Error: {str(e)}]"
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# JARVIS CORE
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- Jarvis Core ---
 
 class Jarvis:
     """Main JARVIS System"""
@@ -725,9 +695,7 @@ class Jarvis:
                     print(f"Error: {str(e)}")
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# ENTRY POINT
-# ═══════════════════════════════════════════════════════════════════════════════
+# --- Entry Point ---
 
 def main():
     """Entry point"""

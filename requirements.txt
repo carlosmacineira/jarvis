@@ -1,22 +1,19 @@
-# JARVIS v3.0 Dependencies
-# Install with: pip install -r requirements.txt
-
 # Core
 anthropic>=0.77.0
 requests>=2.32.0
 python-dotenv>=1.2.0
 
-# Beautiful Terminal UI
+# Terminal UI
 rich>=14.0.0
 colorama>=0.4.6
 
-# Voice (Optional)
+# Voice (optional)
 elevenlabs>=2.33.0
 SpeechRecognition>=3.14.0
 PyAudio>=0.2.14
 pydub>=0.26.0
 
-# Utilities
+# Utils
 schedule>=1.2.0
 psutil>=7.0.0
 watchdog>=6.0.0
